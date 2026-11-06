@@ -103,7 +103,7 @@ final class SnippetStore: ObservableObject {
         guard let items = try? JSONDecoder().decode([InboxItem].self, from: data),
               !items.isEmpty else { return }
 
-        let existingContents = Set(snippets.map { $0.content.trimmingCharacters(in: .whitespacesAndNewlines) })
+        var existingContents = Set(snippets.map { $0.content.trimmingCharacters(in: .whitespacesAndNewlines) })
         var added = 0
         for item in items {
             let trimmed = item.content.trimmingCharacters(in: .whitespacesAndNewlines)
