@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <title>QuickClip</title>
+  <meta name="description" content="Save your frequent texts and copy them to the clipboard with one tap.">
+  <meta name="theme-color" content="#f2f2f7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="QuickClip">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <h1>QuickClip</h1>
+    <div class="top-actions">
+      <button id="settingsBtn" class="icon-btn" aria-label="Settings"></button>
+      <button id="addBtn" class="icon-btn accent" aria-label="Add snippet"></button>
+    </div>
+  </header>
+
+  <main>
+    <div class="search-wrap">
+      <span class="search-icon"></span>
+      <input id="search" type="search" placeholder="Search snippets" autocomplete="off">
+    </div>
+
+    <div id="installBanner" class="banner" hidden>
+      <span class="banner-text">Tip: tap <strong>Share</strong> then <strong>Add to Home Screen</strong> to use QuickClip like a real app.</span>
+      <button id="bannerClose" class="banner-close" aria-label="Dismiss">&times;</button>
+    </div>
+
+    <div id="chips" class="chips" aria-label="Category filter"></div>
+
+    <div id="list"></div>
+
+    <p class="footer-note">
+      Everything is stored locally in your browser. Nothing leaves your device.
+    </p>
+  </main>
+
+  <!-- Snippet editor -->
+  <dialog id="editor">
+    <div class="dlg-head">
+      <button id="editorCancel" class="text-btn">Cancel</button>
+      <strong id="editorTitle">New Snippet</strong>
+      <button id="editorSave" class="text-btn accent">Done</button>
+    </div>
+    <div class="dlg-body">
+      <label class="field">
+        <span>Title (optional)</span>
+        <input id="fTitle" type="text" placeholder="e.g. My Email" autocomplete="off">
+      </label>
+      <label class="field">
+        <span>Content</span>
+        <textarea id="fContent" rows="6" placeholder="Paste or type your text here…"></textarea>
+      </label>
+      <button id="pasteBtn" class="btn plain wide" type="button"></button>
+      <label class="field">
+        <span>Category</span>
+        <select id="fCategory"></select>
+      </label>
+      <label class="check-field">
+        <input id="fPin" type="checkbox">
+        <span>Pin to top</span>
+      </label>
+    </div>
+  </dialog>
+
+  <!-- Category manager -->
+  <dialog id="catManager">
+    <div class="dlg-head">
+      <button id="catClose" class="text-btn">Close</button>
+      <strong>Categories</strong>
+      <span class="head-spacer"></span>
+    </div>
+    <div class="dlg-body">
+      <div id="catList"></div>
+      <div class="card-form">
+        <label class="field">
+          <span>New category name</span>
+          <input id="catName" type="text" placeholder="e.g. Shopping" autocomplete="off">
+        </label>
+        <div id="catPalette" class="palette"></div>
+        <button id="catAdd" class="btn primary wide" type="button">Add Category</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Settings -->
+  <dialog id="settings">
+    <div class="dlg-head">
+      <button id="settingsClose" class="text-btn">Close</button>
+      <strong>Settings</strong>
+      <span class="head-spacer"></span>
+    </div>
+    <div class="dlg-body">
+      <label class="check-field row-style">
+        <input id="sCopyOnTap" type="checkbox">
+        <span>Copy on tap<br><small>Tap a snippet to copy it instantly</small></span>
+      </label>
+      <label class="check-field row-style">
+        <input id="sShowToast" type="checkbox">
+        <span>Confirmation toasts</span>
+      </label>
+      <label class="field">
+        <span>Sort snippets by</span>
+        <select id="sSort">
+          <option value="dateAdded">Date Added</option>
+          <option value="title">Title</option>
+          <option value="mostCopied">Most Copied</option>
+          <option value="recentlyCopied">Recently Copied</option>
+        </select>
+      </label>
+      <div class="divider"></div>
+      <button id="sDeleteAll" class="btn danger wide" type="button">Delete All Snippets</button>
+      <button id="sReset" class="btn danger wide" type="button">Reset App to Defaults</button>
+      <p id="aboutLine" class="about-line"></p>
+    </div>
+  </dialog>
+
+  <div id="toast" role="status"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
