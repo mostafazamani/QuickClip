@@ -59,14 +59,38 @@
                 };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+                AA0000000000000000000021 /* Exceptions for "QuickClip" folder in "QuickClip" target */ = {
+                        isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+                        membershipExceptions = (
+                                QuickClip.entitlements,
+                        );
+                        target = AA0000000000000000000006 /* QuickClip */;
+                };
+                AA0000000000000000000020 /* Exceptions for "QuickClipKeyboard" folder in "QuickClipKeyboard" target */ = {
+                        isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+                        membershipExceptions = (
+                                Info.plist,
+                                QuickClipKeyboard.entitlements,
+                        );
+                        target = AA0000000000000000000012 /* QuickClipKeyboard */;
+                };
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
                 AA0000000000000000000001 /* QuickClip */ = {
                         isa = PBXFileSystemSynchronizedRootGroup;
+                        exceptions = (
+                                AA0000000000000000000021 /* Exceptions for "QuickClip" folder in "QuickClip" target */,
+                        );
                         path = QuickClip;
                         sourceTree = "<group>";
                 };
                 AA0000000000000000000011 /* QuickClipKeyboard */ = {
                         isa = PBXFileSystemSynchronizedRootGroup;
+                        exceptions = (
+                                AA0000000000000000000020 /* Exceptions for "QuickClipKeyboard" folder in "QuickClipKeyboard" target */,
+                        );
                         path = QuickClipKeyboard;
                         sourceTree = "<group>";
                 };
